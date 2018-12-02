@@ -27,6 +27,9 @@
             <kind>1</kind>
             <string>event_inherited();
 
+text = array_create(1);
+text[0] = "I'll keep my eyes on you, prick!";
+
 spr_shadow = spr_character_shadow;
 spr_base = spr_base_male_1;
 spr_torso = spr_male_chain_mail;

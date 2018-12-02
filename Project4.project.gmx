@@ -69,6 +69,7 @@
     <sprite>sprites\spr_inventory_items</sprite>
     <sprite>sprites\spr_allcoins</sprite>
     <sprite>sprites\spr_speech_bubble</sprite>
+    <sprite>sprites\spr_transition</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_tile_terrain</background>
@@ -87,6 +88,10 @@
     <script>scripts\respawn_crop.gml</script>
     <script>scripts\array_initialize_gm2.gml</script>
     <script>scripts\string_wrap.gml</script>
+    <script>scripts\create_menu_page.gml</script>
+    <script>scripts\resume_game.gml</script>
+    <script>scripts\exit_game.gml</script>
+    <script>scripts\change_volume.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_text_12</font>
@@ -114,6 +119,8 @@
     <object>objects\obj_notificator</object>
     <object>objects\obj_speech_bubble</object>
     <object>objects\obj_display_manager</object>
+    <object>objects\obj_menu</object>
+    <object>objects\obj_menu_button</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_0</room>

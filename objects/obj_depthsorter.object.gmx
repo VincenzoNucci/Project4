@@ -71,7 +71,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = obj_game.tilesDepthInstances;
+            <string>//depth = obj_game.tilesDepthInstances;
 </string>
           </argument>
         </arguments>

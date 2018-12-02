@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_character_mask</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>999996</depth>
+  <visible>-1</visible>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_depthobject</parentName>
   <maskName>spr_character_mask</maskName>
@@ -33,6 +33,8 @@ speakingNPC = noone;
 spd = 3;
 facing = 0;
 talkNotify = false;
+speaking_radius = 15;
+paused = false;
 //la posizione del pezzo di sprite da prendere dallo sheet
 x_frame = 0;
 y_frame = 8;
@@ -117,9 +119,10 @@ if(amountMoveX != 0) {
                 x += sign(amountMoveX);
             } else {
                 //mi fermo prima di toccare
-                if(object_get_parent(collisionH.object_index) == obj_NPC)
+                if(object_get_parent(collisionH.object_index) == obj_NPC &amp;&amp; point_in_circle(collisionH.x,collisionH.y,x,y,speaking_radius) &amp;&amp; array_length_1d(collisionH.text) &gt; 0) {
                     speakingNPC = collisionH;
-                talkNotify = true;
+                    talkNotify = true;
+                }
                 break;
             }
         }
@@ -136,10 +139,13 @@ if(amountMoveY != 0) {
         for(var i = 0; i &lt; abs(amountMoveY); i++) {
             if(!place_meeting(x, y+sign(amountMoveY), obj_solid)) {
                 y += sign(amountMoveY);
+                talkNotify = false;
+                speakingNPC = noone;
             } else {
-                if(object_get_parent(collisionV.object_index) == obj_NPC)
+                if(object_get_parent(collisionV.object_index) == obj_NPC &amp;&amp; point_in_circle(collisionV.x,collisionV.y,x,y,speaking_radius) &amp;&amp; array_length_1d(collisionV.text) &gt; 0) {
                     speakingNPC = collisionV;
-                talkNotify = true;
+                    talkNotify = true;
+                }
                 break;
             }
         }
@@ -150,7 +156,10 @@ if(amountMoveY != 0) {
     }
 }
 
-//Collisione con OGGETTI (si toccano fisicamente)
+//Collisione con NPC per parlare
+
+
+//Collisione con OGGETTI DI TRANSIZIONE (si toccano fisicamente)
 var inst = instance_place(x,y,obj_transition);
 if(inst != noone &amp;&amp; facing == inst.playerFacingBefore) {
     with(obj_game) {
@@ -198,7 +207,10 @@ if(talkNotify &amp;&amp; speakingNPC != noone &amp;&amp; keyboard_check_pressed(
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//quanto dura l'animazione del camminare
+            <string>if(global.pause)
+    exit;
+
+//quanto dura l'animazione del camminare
 var anim_length = 9,
     frame_size = 64,
     anim_speed = 12;
@@ -271,7 +283,7 @@ if(spr_head != -1)
 
 if(talkNotify) {
     var n = "[E] Talk";
-    draw_text_colour(x,y,n,c_yellow, c_yellow, c_yellow, c_yellow, 1);
+    draw_text_colour(x,y - sprite_height,n,c_yellow, c_yellow, c_yellow, c_yellow, 1);
 }
 
 

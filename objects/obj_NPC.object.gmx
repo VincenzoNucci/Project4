@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>0</visible>
-  <depth>999996</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>obj_depthobject</parentName>
   <maskName>spr_character_mask</maskName>
@@ -30,6 +30,8 @@ event_inherited();
 
 spd = 1;
 
+text = 0;
+paused = false;
 hasTorch = 0;
 
 //la posizione del pezzo di sprite da prendere dallo sheet
@@ -184,7 +186,10 @@ y += amountMoveY;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//quanto dura l'animazione del camminare
+            <string>if(global.pause)
+    exit;
+
+//quanto dura l'animazione del camminare
 var anim_length = 9,
     frame_size = 64,
     anim_speed = 12;

@@ -56,8 +56,8 @@
     <instance objName="obj_camera" x="0" y="0" name="inst_373EF0E5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_solid" x="480" y="384" name="inst_B34B55E6" locked="0" code="targetRoom = rm_inn;" scaleX="3" scaleY="-1.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_guard" x="160" y="480" name="inst_440337D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_guard" x="352" y="512" name="inst_C92A6D24" locked="0" code="hasTorch = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_guard" x="640" y="480" name="inst_98795A59" locked="0" code="hasTorch = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_guard" x="352" y="512" name="inst_C92A6D24" locked="0" code="hasTorch = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_guard" x="640" y="480" name="inst_98795A59" locked="0" code="hasTorch = 0;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_guard" x="832" y="352" name="inst_BE5D38FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_transition" x="544" y="366" name="inst_31C0F14B" locked="0" code="targetRoom = rm_inn;&#xA;targetX = 288;&#xA;targetY = 340;&#xA;playerFacingBefore = dir.up;&#xA;playerFacingAfter = dir.up;" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_transition" x="576" y="366" name="inst_E13C7875" locked="0" code="targetRoom = rm_inn;&#xA;targetX = 288;&#xA;targetY = 340;&#xA;playerFacingBefore = dir.up;&#xA;playerFacingAfter = dir.up;" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>

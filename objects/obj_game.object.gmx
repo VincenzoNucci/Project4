@@ -88,34 +88,6 @@ room_goto_next();
     debug = !debug;
 }
 
-if(keyboard_check_pressed(vk_escape)) {
-    openOptions = !openOptions;
-    
-    //crea uno snapshot dello schermo, grande quanto la view perchè
-    //disegno sullo schermo solo quello che vedo
-    pauseSurface = surface_create(view_wview[0],view_hview[0]);
-    surface_set_target(pauseSurface);
-    //questo draw viene fatto nella surface e non nello schermo
-    //draw_clear_alpha(c_black,0.5);
-    with(all) {
-        if(visible) {
-            //ottiene la coordinata assoluta nella surface dell'oggetto
-            x -= view_xview[0];
-            y -= view_yview[0];
-            event_perform(ev_draw,0);
-            //riposiziona l'oggetto nella posizione di origine
-            x += view_xview[0];
-            y += view_yview[0];
-            
-        }
-    }
-    surface_reset_target();
-    //DISATTIVO GLI NPC E IL PLAYER MA NON IL MOUSE
-    instance_deactivate_object(obj_camera);
-    instance_deactivate_object(obj_player);
-    instance_deactivate_object(obj_NPC);
-}
-
 if(keyboard_check_pressed(vk_tab)) {
     openInventory = !openInventory;
 }
@@ -231,21 +203,6 @@ draw_circle_colour(rad * 2, rad * 2, rad * 3, merge_colour(c_yellow, c_white, 0.
 draw_set_alpha(1);
 draw_circle_colour(0 + rad * 2, 0 + rad *2, rad, c_yellow, c_yellow, false);
 //draw_sprite_part(spr_gui,0,714,288,160,128,clockXMargin,clockYMargin);
-
-//DISEGNA LE OPZIONI SE SI PREME ESC
-if(openOptions) {
-    if(surface_exists(pauseSurface)) {
-        draw_surface_ext(pauseSurface,0,0,2,2,0,c_white,1);
-    }
-    draw_set_alpha(0.5);
-    draw_rectangle_colour(0,0,guiWidth,guiHeight,c_black,c_black,c_black,c_black,false);
-    draw_set_alpha(1);
-    draw_menu_rectangle_centered("Resume","Options","Exit Game");
-} else {
-    if(surface_exists(pauseSurface))
-        surface_free(pauseSurface);
-    instance_activate_all();
-}
 
 //DISEGNA L'INVENTARIO SE VIENE APERTO
 if(openInventory) {
